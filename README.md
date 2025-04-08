@@ -59,3 +59,7 @@ Readme Descritpion of V-Server-Setup Project
     5. Take your HTML Code into this file. 
     6. Save and Close this file. 
     7. Open your new Websiete on "your-ip-adress:8081"    
+
+
+    Link zum dso-github: https://github.com/Developer-Akademie-GmbH/dso-python-tasks/compare/main...HerzogElias:dso-python-tasks:module-2?expand=1
+    
