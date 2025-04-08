@@ -58,4 +58,4 @@ Readme Descritpion of V-Server-Setup Project
     4. Open the new html file with "sudo nano var/www/alternatives/alternate-index.html"
     5. Take your HTML Code into this file. 
     6. Save and Close this file. 
-    7. Open your new Websiete on "your-ip-adress:8081"
+    7. Open your new Websiete on "your-ip-adress:8081"    
