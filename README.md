@@ -1,65 +1,104 @@
 # v-server-setup
-Readme Descritpion of V-Server-Setup Project 
+Readme Descritpion of V-Server-Setup Project. 
+This Project describes how do you can set up your own VServer. 
 
-1. Login to your VServer with your Username and passwort: 
-    ssh username@ip-adress 
+## Revequetits: 
+    You need a Ubuntu Cloud VM to setting your VServer.
 
-2. if there are function of login with Username and passwort, logout from your VServer. 
 
-3. Create SSH-Keys with Sandard ed22591 on your local maschine. 
-    Use: ssh-keygen -t ed25519 -C "deine-email@example.com"
+## Qucikstart 
+### Create SSH Keys 
 
-4. Use "type" on your local maschine to copy your generated public key on your VServer: 
-    Use: type C:/Path/to/key| ssh username@ip-adress "cat >> /home/user/.ssh/authorized_keys"
+### First Login with Passwort
 
-5. Try to login to your VServer with your copied public key. The system dont ask you for a passwort. 
-    ssh -i C:/Path1/to/key usernema@ipadress
+### Deactivate Passwort Login 
 
-6. Logout from your VServer and repeat Step 5. 
-    Make sure that you can login with your SSH Key! 
+### Install nginx 
 
-7. Deatkivate Password Login. 
-    1. Go to "etc/ssh/sshd.config" with Bash "sudo nano /etc/ssh/sshd_config"
+#### Installing Process
+
+#### Create Alterantive Website for nginx
+
+
+1. Create SSH-Keys with Sandard ed22591 on your local maschine. 
+    ``` bash
+    ssh-keygen -t ed25519 -C "deine-email@example.com"
+    ```
+
+2. Login to your VServer with your Username and passwort: 
+    ```bash
+    ssh <username>@<ip-adress> 
+    ```
+
+3. Use "type" on your local maschine to copy your generated public key on your VServer: 
+    ``` bash
+    type C:/Path/to/key| ssh username@ip-adress "cat >> /home/user/.ssh/authorized_keys"
+    ```
+
+4. Try to login to your VServer with your copied public key.
+    ```bash
+    ssh -i C:/Path1/to/key <usernema>@<ip-adress>
+    ```
+
+5. Deatkivate Password Login. 
+    1. Go to "etc/ssh/sshd.config" with Bash 
+    ``` bash
+    sudo nano /etc/ssh/sshd_config
+    ```
     2. Serarch to "#PasswortAuthentication yes" and change it to "PasswortAuthentication no"
     3. Save the file and exit 
-    4. Restart the sshd service with "sudo sysrtemctl restart ssh.service" 
+    4. Restart the sshd service. 
+    ``` bash
+    sudo sysrtemctl restart ssh.service" 
+    ```
 
+6. Update Respoitories on your Server. 
+    ``` bash
+    sudo apt update" 
+    ```
 
-8. Logut form Server 
+7. Install Nginx on your Server.
+    Use the following command: 
+    ``` bash 
+    sudo apt install nginx -y
+    ```
 
-9. Try Login with username and passwort like at stap 1. You must get a "Percession denied" 
-
-10. Login with SSH to your VServer. 
-
-11. Update Respoitories on your Server. 
-    Use: "sudo apt update" 
-
-
-12. Install Nginx on your Server.
-    Use: "sudo apt install nginx -y"
-
-13. Crearte Alternative html side for your nginx Serrver: 
-    1. Create a new Directory with "mkdir /var/www/alternatvies" 
-    2. Create a new HTML file with "sudo touch /var/www/alternatives/alternate-index.html"
-    3. Add a new configuration to: "sudo nano /etc/nginx/sites-enabled/alternatives"
+8. Crearte Alternative html side for your nginx Serrver: 
+    1. Create a new Directory 
+    ``` bash
+    mkdir -p /var/www/alternatives
+    ```
+    2. Create a new HTML file:
+    ``` bash 
+    sudo touch /var/www/alternatives/alternate-index.html
+     ```
+ 
+    3. Add a new configuration to: 
+    ``` bash
+    sudo nano /etc/nginx/sites-enabled/alternatives
+    ```
         1. Open File
         2. Add: 
+            ``` bash
             server {
             listen 8081;
             listen [::]:8081;
 
             root /var/www/alternatives;
-            index alternate-index.html;
+            index alternate-index.html;git 
 
             location / {
                 try_files $uri $uri/ =404;
             }
+            ```
         3. Save this file and close it. 
-    4. Open the new html file with "sudo nano var/www/alternatives/alternate-index.html"
+    4. Open the new html file.
+    ``` bash 
+    sudo nano var/www/alternatives/alternate-index.html
+    ```
     5. Take your HTML Code into this file. 
     6. Save and Close this file. 
-    7. Open your new Websiete on "your-ip-adress:8081"    
+    7. Open your new Websiete on "<your_ip>:8081"    
 
 
-    Link zum dso-github: https://github.com/Developer-Akademie-GmbH/dso-python-tasks/compare/main...HerzogElias:dso-python-tasks:module-2?expand=1
-    
+    Link zum dso-github: https://github.com/Developer-Akademie-GmbH/dso-python-tasks/pull/5
