@@ -1,35 +1,42 @@
 # v-server-setup
-Readme Descritpion of V-Server-Setup Project. 
-This Project describes how do you can set up your own VServer. 
 
-## Revequetits: 
+## Table of Contents
+
+1. [Introduction](#Introduction)
+2. [Prerequisites](#Prerequisites)
+3. [Usage](#Usage)  
+   - [Create SSH Keys](#Crearte-SSH-Keyws)  
+   - [First Login with Passwort](#Login-wiith-Passwort)  
+   - [Deactivate Passwort Login](#Deactivae-Passwortlogin)  
+   - [Install nginx](#Install-Nginx)  
+     - [Installing Process](#Installing-Process)  
+     - [Create Alternative Website for nginx](#Create-alternatvie-Webseite)  
+
+
+## Introduction
+Readme Descritpion of V-Server-Setup Project. 
+This Project describes how do you can set SSH Connection to your Server and configurate a nginx Webserver to this VServer. 
+
+## Prerequisites: 
     You need a Ubuntu Cloud VM to setting your VServer.
 
 
-## Qucikstart 
-### Create SSH Keys 
+## Usage 
 
-### First Login with Passwort
-
-### Deactivate Passwort Login 
-
-### Install nginx 
-
-#### Installing Process
-
-#### Create Alterantive Website for nginx
-
-
+### Create-SSH-Keys
 1. Create SSH-Keys with Sandard ed22591 on your local maschine. 
     ``` bash
     ssh-keygen -t ed25519 -C "deine-email@example.com"
     ```
 
+
+### Login-with-Passwort
 2. Login to your VServer with your Username and passwort: 
     ```bash
     ssh <username>@<ip-adress> 
     ```
 
+### Deacitvate-Passwortlogin
 3. Use "type" on your local maschine to copy your generated public key on your VServer: 
     ``` bash
     type C:/Path/to/key| ssh username@ip-adress "cat >> /home/user/.ssh/authorized_keys"
@@ -51,6 +58,8 @@ This Project describes how do you can set up your own VServer.
     ``` bash
     sudo sysrtemctl restart ssh.service" 
     ```
+### Install Nginx
+#### Insalling--Process 
 
 6. Update Respoitories on your Server. 
     ``` bash
@@ -62,7 +71,7 @@ This Project describes how do you can set up your own VServer.
     ``` bash 
     sudo apt install nginx -y
     ```
-
+#### Create-alternatvie-Webseite
 8. Crearte Alternative html side for your nginx Serrver: 
     1. Create a new Directory 
     ``` bash
