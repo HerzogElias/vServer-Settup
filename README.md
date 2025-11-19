@@ -1,4 +1,4 @@
-# vSetup Settup
+# vServer Settup
 
 ## Table of Contents
 
