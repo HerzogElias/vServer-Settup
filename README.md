@@ -1,4 +1,4 @@
-# v-server-setup
+# vSetup Settup
 
 ## Table of Contents
 
